@@ -39,7 +39,6 @@ print(a)
 
 
 #membership operator
-
 print('D'in 'Delhi') # cheak that D is paresent or not in Delhi present then "true"
 print('D' not in 'Delhi') # cheak that D is paresent or not in Delhi not thrn return "true"
 
