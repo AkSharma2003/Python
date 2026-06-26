@@ -57,7 +57,7 @@ print(a.values)
 
 # series using red_csv
 # witb one col 
-subs=pd.read_csv('/Users/paimatho/Desktop/Python/pandas/customers-100.csv',index_col='Customer Id')['First Name']
+subs=pd.read_csv('/Users/paimatho/Desktop/Python/pandas/data/customers-100.csv',index_col='Customer Id')['First Name']
 # in sub here 12 collum but in the series only two collum is avaible
 print(subs)
 print(subs.name)

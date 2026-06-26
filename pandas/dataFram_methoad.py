@@ -17,8 +17,8 @@ marks=pd.DataFrame([
 
 print(marks)
 print(marks.value_counts()) # besiclay it return value count of row
-ipl=pd.read_csv('/Users/paimatho/Desktop/Python/pandas/ipl-matches.csv')
-bestman=pd.read_csv('/Users/paimatho/Desktop/Python/pandas/batsman_runs_ipl.csv')
+ipl=pd.read_csv('/Users/paimatho/Desktop/Python/pandas/data/ipl-matches.csv')
+bestman=pd.read_csv('/Users/paimatho/Desktop/Python/pandas/data/batsman_runs_ipl.csv')
 # Q1. print all olayer who have how many man of the matches
 print(ipl[ipl['MatchNumber'].str.isdigit()]['Player_of_Match'].value_counts())
 

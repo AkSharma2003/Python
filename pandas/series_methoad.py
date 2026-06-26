@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd;
-vk=pd.read_csv('/Users/paimatho/Desktop/Python/pandas/kohli_ipl.csv',index_col='match_no')['runs']
+vk=pd.read_csv('/Users/paimatho/Desktop/Python/pandas/data/kohli_ipl.csv',index_col='match_no')['runs']
 print(vk)
 
 # astype you can change size of any thing

@@ -27,10 +27,10 @@ marks=pd.DataFrame(student_dic)
 print(marks)
 
 # using read_csv
-d=pd.read_csv('/Users/paimatho/Desktop/Python/pandas/customers-100.csv')
+d=pd.read_csv('/Users/paimatho/Desktop/Python/pandas/data/customers-100.csv')
 print(d)
 
-match=pd.read_csv('/Users/paimatho/Desktop/Python/pandas/matches.csv')
+match=pd.read_csv('/Users/paimatho/Desktop/Python/pandas/data/matches.csv')
 print(match)
 
 # dataFram atributes and methoad
