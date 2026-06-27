@@ -51,6 +51,43 @@ print(final[['name','course_name','price']])
 # Q4 ploat bar chart for revenue / course
 chart=reg.merge(course,on='course_id').groupby('course_name')['price'].sum()
 chart.plot(kind='bar')
-plt.show()
+# plt.show() # non coment for show barchart
 
+# Q5. find the student who inrolled in both the months
+common_student=np.intersect1d(month1['student_id'],month2['student_id'])
+print(student[student['student_id'].isin(common_student)])
 
+# Q6. find the course hat got no inrollment
+courseList=np.setdiff1d(course['course_id'],reg['course_id'])
+print(course[course['course_id'].isin(courseList)])
+
+# Q7. find student who did not enroll into any course
+studentList=np.setdiff1d(student['student_id'],reg['student_id'])
+print(student[student['student_id'].isin(studentList)])
+
+# Q8. print student name -> partener name for all enrolled student
+common=student.merge(student,how='inner',left_on='partner',right_on='student_id')
+print(common[['name_x','name_y']])
+
+# Q9. find top 3 student who did most number enrollments
+name=reg.merge(student,how='inner',on='student_id').groupby(['student_id','name'])['name'].count()
+print(name.sort_values(ascending=False).head(3))
+
+# Q 10. find top 3 stuent who spent most amount of money on course
+price=reg.merge(student,on='student_id').merge(course,on='course_id').groupby(['student_id','name'])['price'].sum()
+print(price.sort_values(ascending=False).head(3))
+
+# ipl problum
+# Q1. find top 3 stedium with highest sixes/match ratio
+match=delivery.merge(matches,how='inner',left_on='match_id',right_on='id')
+six=match[match['batsman_runs']==6]
+num_six=six.groupby(['batsman_runs','venue'])['batsman_runs'].count()
+num_match=matches['venue'].value_counts().sort_index()
+ratio=num_six/num_match
+print(ratio.sort_values(ascending=False).head(3).droplevel(0))
+
+# Q2. find orange cap holder of all the seasons
+print(match.columns)
+ocap=match.groupby(['season','batsman'])['batsman_runs'].sum()
+ocap=ocap.sort_values(ascending=False).reset_index().drop_duplicates('season',keep='first')
+print(ocap.sort_values('season').set_index('season'))
