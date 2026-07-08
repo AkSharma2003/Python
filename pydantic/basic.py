@@ -9,24 +9,39 @@
 # 3. pass the vailidated modle object to function or use it throughout your codebase 
 #   * This ensures that every part of your program works with clean, type-safe, and logically vailid data
 
-from pydantic import BaseModel
+from pydantic import BaseModel,Field
+from typing_extensions import Annotated
+from typing import List,Dict,Optional
 
 class patient(BaseModel):
-    name:str
-    age:int
+    name:Annotated[str,Field(max_length=40,title="name of the patint")]
+    age:int=Field(gt=0, lt=120)
+    weight:Annotated[float,Field(gt=0, strict=True)] # here use strict so type conversion is not allowed
+    maried:bool
+    alergies:Optional[List[str]]=None # here alergies is optional and also use optional = none becouse it have bydefault value is none
+    contact:Dict[str,str]
     
 def insert_patient_data(patient:patient):
     print(patient.name)
     print(patient.age)
+    print(patient.weight)
+    print(patient.maried)
+    print(patient.alergies)
+    print(patient.contact)
     print("patient data inserted successfull")
-
+    
 def update_patient_data(patient:patient):
     print(patient.name)
     print(patient.age)
+    print(patient.weight)
+    print(patient.maried)
+    print(patient.alergies)
+    print(patient.contact)
     print("patient data update successfull")
 
-patient_info={"name":"Ankit","age":23}
-patient_info2={"name":"missPai","age":18}
+patient_info={"name":"Ankit","age":23,"weight":45.5,"maried":False,"alergies":['fiver','dust'],"contact":{'email':'abc@gmail.com','phone':'1234567890 '}}
+patient_info2={"name":"missPai","age":18,"weight":45.5,"maried":False,"alergies":['fiver','dust'],"contact":{'email':'abc@gmail.com','phone':'1234567890'}}
+
 patient1=patient(**patient_info)
 patient2=patient(**patient_info2)
 
